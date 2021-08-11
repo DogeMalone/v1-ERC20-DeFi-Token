@@ -21,21 +21,49 @@
   * add .env
 
 ###Alpha Test
-```   Deploying 'Migrations'
+```
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
    ----------------------
-   > transaction hash:    0x9fb6ea702d781a270da9058d9e78d91c72c163e44e0551be1ce8a43ac5687f09
-   > Blocks: 3            Seconds: 8
-   > contract address:    0xB471AaDD7f948C78CDDe421dE6B966c4A5638B72
-   > block number:        11395847
-   > block timestamp:     1628714238
+   > transaction hash:    0x776991a23bfc05beb93749ddca265e4d4cc43a7999ca5e145b2a105cff33a8ac
+   > Blocks: 4            Seconds: 12
+   > contract address:    0x8Fe17E73FD6704162D64FAf70fDc3DDe77154da3
+   > block number:        11396497
+   > block timestamp:     1628716188
    > account:             0xdB898C319a67A7e647Dc570d5d20FA4d64A093F3
-   > balance:             9.29386807
+   > balance:             9.29157509
    > gas used:            186963 (0x2da53)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00186963 ETH```
+   > total cost:          0.00186963 ETH
 
-Script is functional on BNB Test-Net
+   Pausing for 5 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 11396500)
+   > confirmation number: 3 (block: 11396501)
+   > confirmation number: 4 (block: 11396502)
+   > confirmation number: 6 (block: 11396504)
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00186963 ETH
+
+
+Summary
+=======
+> Total deployments:   1
+> Final cost:          0.00186963 ETH
+```
+Script is functional on BNB Test-Net (deployment)
+```
+truffle run verify Migrations --network BNBTest
+Verifying Migrations
+Pass - Verified: https://testnet.bscscan.com/address/0x8Fe17E73FD6704162D64FAf70fDc3DDe77154da3#contracts
+```
+Script is completely functional
 
 ###Objectives:
 After paging through the orginal sources found below, with the two security audits, we at Doge Malone are upgrading this contract to v0.8.6 in order to fix a plethora of issues found.
