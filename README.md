@@ -1,6 +1,6 @@
-<h1>Doge Malone DeFi ERC20 Token:</h1>
-<h2>Orginal Setup by @MaxflowO2</h2>
-<h3>Requirements:</h3>
+#Doge Malone DeFi ERC20 Token:
+##Orginal Setup by @MaxflowO2
+###Requirements:
 1. Node.js - Latest 
 2. NPM - Latest
 3. Truffle - Latest
@@ -20,7 +20,7 @@
 13. create .gitignore
   * add .env
 
-<h3>Alpha Test</h3>
+###Alpha Test
 ```
 truffle deploy --network BNBTest
 
@@ -81,7 +81,7 @@ Pass - Verified: https://testnet.bscscan.com/address/0x8Fe17E73FD6704162D64FAf70
 ```
 Script is completely functional
 
-<h3>Objectives:</h3>
+###Objectives:
 After paging through the orginal sources found below, with the two security audits, we at Doge Malone are upgrading this contract to v0.8.6 in order to fix a plethora of issues found.
 
 Original Sources:
@@ -89,7 +89,7 @@ Original Sources:
 *[HashEx audit](https://github.com/HashEx/public_audits/tree/master/TIKI)
 *[Certik audit](https://certik-public-assets.s3.amazonaws.com/REP-Tiki-Finance-2021-08-07.pdf)
 
-<h3>v0.0.0: 1:1 Tiki Clone</h3>
+###v0.0.0: 1:1 Tiki Clone
 This is a clone of Tiki Finance Token, doing a simple deployment with 2_deploy_0.0.0.js
 
 Under directory ./contracts/
