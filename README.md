@@ -22,6 +22,22 @@
 
 <h3>Alpha Test</h3>
 ```
+truffle deploy --network BNBTest
+
+Compiling your contracts...
+===========================
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Everything is up to date, there is nothing to compile.
+
+
+
+Starting migrations...
+======================
+> Network name:    'BNBTest'
+> Network id:      97
+> Block gas limit: 30000000 (0x1c9c380)
+
+
 1_initial_migration.js
 ======================
 
@@ -141,7 +157,15 @@ Truffle v5.4.5 (core: 5.4.5)
 Node v10.19.0
 ```
 Ahh yes the standard TIKI fork issues...
+```
+creation of TIKI errored: VM error: revert.
 
+revert
+	The transaction has been reverted to the initial state.
+Note: The called function should be payable if you send value and the value you send should be less than your current balance.
+Debug the transaction to get more information.
+```
+Note the remix... Let's fix this damn thing shall we?
 ###v0.0.1: Upgrade of SafeMath, Ownable, IUniswapPair, IUinswapFactory, IUniswapV2Router to 0.8.6
 Not messing with DividendPayingToken or IterableMapping as of yet, next step is upgrading those.
 
