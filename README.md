@@ -1,6 +1,6 @@
-#Doge Malone DeFi ERC20 Token:
-##Orginal Setup by @MaxflowO2
-###Requirements:
+<h1>Doge Malone DeFi ERC20 Token:</h1>
+<h2>Orginal Setup by @MaxflowO2</h2>
+<h3>Requirements:</h3>
 1. Node.js - Latest 
 2. NPM - Latest
 3. Truffle - Latest
@@ -20,7 +20,7 @@
 13. create .gitignore
   * add .env
 
-###Alpha Test
+<h3>Alpha Test</h3>
 ```
 1_initial_migration.js
 ======================
@@ -65,7 +65,7 @@ Pass - Verified: https://testnet.bscscan.com/address/0x8Fe17E73FD6704162D64FAf70
 ```
 Script is completely functional
 
-###Objectives:
+<h3>Objectives:</h3>
 After paging through the orginal sources found below, with the two security audits, we at Doge Malone are upgrading this contract to v0.8.6 in order to fix a plethora of issues found.
 
 Original Sources:
@@ -73,13 +73,74 @@ Original Sources:
 *[HashEx audit](https://github.com/HashEx/public_audits/tree/master/TIKI)
 *[Certik audit](https://certik-public-assets.s3.amazonaws.com/REP-Tiki-Finance-2021-08-07.pdf)
 
-###v0.0.0: 1:1 Tiki Clone
+<h3>v0.0.0: 1:1 Tiki Clone</h3>
 This is a clone of Tiki Finance Token, doing a simple deployment with 2_deploy_0.0.0.js
 
-Under directory ./contracts/v0.0.0/
+Under directory ./contracts/
 
 IterableMapping is at address (insert)
 Tiki.sol is at address (insert)
+
+```
+truffle deploy --network BNBTest
+
+Compiling your contracts...
+===========================
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Everything is up to date, there is nothing to compile.
+
+
+
+Starting migrations...
+======================
+> Network name:    'BNBTest'
+> Network id:      97
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+2_deploy_contract.js
+====================
+
+   Deploying 'IterableMapping'
+   ---------------------------
+   > transaction hash:    0x47f34529d92ce5015de7d3d8f1160783ffadd33a0936a99579104ed9bb2cd1f5
+   > Blocks: 3            Seconds: 9
+   > contract address:    0x5Df08bA94D7E827164Ab0662d5b7a35DB4D9F4EA
+   > block number:        11397987
+   > block timestamp:     1628720658
+   > account:             0xdB898C319a67A7e647Dc570d5d20FA4d64A093F3
+   > balance:             9.28572387
+   > gas used:            542787 (0x84843)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00542787 ETH
+
+   Pausing for 5 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 11397990)
+   > confirmation number: 4 (block: 11397992)
+   > confirmation number: 5 (block: 11397993)
+
+   Linking
+   -------
+   * Contract: TIKI <--> Library: IterableMapping (at address: 0x5Df08bA94D7E827164Ab0662d5b7a35DB4D9F4EA)
+
+   Deploying 'TIKI'
+   ----------------
+   > transaction hash:    0x46a43b2f41d146790fb0765d7954d850a22a0dd1f705b5c5f6ac59f363fdea69
+
+Error:  *** Deployment Failed ***
+
+"TIKI" hit a require or revert statement somewhere in its constructor. Try:
+   * Verifying that your constructor params satisfy all require conditions.
+   * Adding reason strings to your require statements.
+
+    at /usr/local/lib/node_modules/truffle/build/webpack:/packages/deployer/src/deployment.js:365:1
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Truffle v5.4.5 (core: 5.4.5)
+Node v10.19.0
+```
+Ahh yes the standard TIKI fork issues...
 
 ###v0.0.1: Upgrade of SafeMath, Ownable, IUniswapPair, IUinswapFactory, IUniswapV2Router to 0.8.6
 Not messing with DividendPayingToken or IterableMapping as of yet, next step is upgrading those.
