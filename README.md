@@ -81,7 +81,7 @@ Pass - Verified: https://testnet.bscscan.com/address/0x8Fe17E73FD6704162D64FAf70
 Script is completely functional
 
 ### Objectives:
-After paging through the orginal sources found below, with the two security audits, we at Doge Malone are upgrading this contract to v0.8.6 in order to fix a plethora of issues found.
+After paging through the orginal sources found below, with the two security audits, we at Doge Malone are upgrading this contract to v0.8.7 in order to fix a plethora of issues found.
 
 Original Sources:
 * [bscscan.com uploaded source](https://bscscan.com/address/0x9b76d1b12ff738c113200eb043350022ebf12ff0#code)
@@ -89,7 +89,9 @@ Original Sources:
 * [Certik audit](https://certik-public-assets.s3.amazonaws.com/REP-Tiki-Finance-2021-08-07.pdf)
 
 ### v0.0.0: 1:1 Tiki Clone
-This is a clone of Tiki Finance Token, doing a simple deployment with 2_deploy_0.0.0.js
+This is a clone of Tiki Finance Token, doing a simple deployment with 2_deploy_contract.js
+
+Ensure you use a `deployer.link(libA, b)` style link!
 
 Under directory ./contracts/
 
@@ -251,7 +253,7 @@ ChangeLog:
 * `constructor() public DividendPayingToken("TIKI_Dividend_Tracker", "TIKI_Dividend_Tracker")` now `constructor() DividendPayingToken("TIKI_Dividend_Tracker", "TIKI_Dividend_Tracker")`: --> project:/contracts/Tiki.sol:521:5<br>
 * `_withdrawDividendOfUser(msg.sender);` now `_withdrawDividendOfUser(payable(msg.sender));`: --> project:/contracts/DividendPayingToken.sol:84:29
 * `dividendTracker.processAccount(msg.sender, false);` now `dividendTracker.processAccount(payable(msg.sender), false);`: --> project:/contracts/Tiki.sol:300:34
-Current Readout
+<br>Current Readout
 ```
 truffle deploy --network BNBTest
 
@@ -371,6 +373,67 @@ Error:  *** Deployment Failed ***
 Truffle v5.4.5 (core: 5.4.5)
 Node v10.19.0
 ```
-### v0.1.0: Firesail of TIKI branding, removal of their excess functions, cleaning code to Certik/HashEx standards
+So what does that mean?
+* SPDX errors - Licence information, informational error (will fix via forks from GitHub, commit of comment, npm deployment)
+* State mutability errors - Since the second token deployed is the "dividends token" and IterableMapping.sol uses that, it's a very non user friendly edition of ERC20, yes it's a token, but it's a token you can not transfer (Tiki team explains it in their development)
+* Size > 24576 bytes - Here's the major problem, two ways to circumvent, Optimization or cleaning code
+* One use of Context.sol - find the code, update all to @openzepplin standards
+* Require/Revert statement in constructor - Tiki Dividend Token issue
 
-### v0.1.1: Update of variables from immutable to functions and vice versa
+The gameplan:
+[] Fork pancakeswap's pancake-swap-core and pancake-swap-periphery, add SPDX lines, commit, deploy public npm's
+[] Fix Context.sol multiple versions (one in TIKI now and different one in TIKI-Dividend)
+[] Look at mutability states, probably won't attempt to resolve
+[] Look at require/reverts in both constructors
+[] Trim the fat of Tiki.sol
+[] Launch a copy on test-net
+[] Update README.md
+
+### v0.1.0: Tiki edition in 0.8.7 deployed... now let's modify it to suit Doge Malone standards!
+To Do List:
+[] Fire sail TIKI branding
+[] Modify immutable types to var (if using a function)
+[] Modify var to immutable types (if not using a function)
+[] Upgrade from HashEx audit
+	* ERC20: Unsafe Math -> now @openzepplin standards as of v0.0.1
+	* SafeMathInt -> must really look at this with dividend token
+	* TIKI: swapTokensForEth -> flash loan issues (medium)
+	* TIKI: hardcoded addresses -> will change all to functions
+	* TIKI: BEP20 standards -> fixing to @openzepplin standards
+	* TIKI: _transfer() in Dividend Token
+	* TIKI: tx is limited to WETH pair
+	* DPT: BNB transfers and gas limit
+	* TIKI: indexing
+	* TIKI: fees (var/constant), same as addresses
+	* TIKI: multiple checks if amount>0
+	* TIKI: taxFee -> BNBRewardsFee: going to rename this again because of Johnny rule
+	* DPT: No transfers -> designed this way, will have ama on it later
+	* IterableMapping[]: change inserted[] to indexOf[]
+	* General: Yeah Tiki.sol is done, will get DPT upgraded as well
+[] Upgrade CertiK standards
+	* Auto-Payment: Needs more of a description nothing is automatic
+	* DPTOI.sol: Rebranding of what a function does in comments
+	* DPTOI.sol: Clean a function 148-150
+	* Tiki.sol: 3rd Party Deps - Minor
+	* Tiki.sol: Unreachable code (same as HashEx)
+	* Tiki.sol: FixedSaleWallet - remove 100% 141-145:173-176
+	* Tiki.sol: Owner is multi-sig wallet 183-212:534-542:633-648:230-235
+	* Tiki.sol: Add emit 409, 412, 633
+	* Tiki.sol: isFixedSaleBuy 336-340
+	* Tiki.sol: Irrelevant comments 441
+	* Tiki.sol: Return values, add sucess/failure options 463-469:479-486
+	* Tiki.sol: Typos 64
+[] Deploy alpha contract to BNBTest net
+	* [Test net IterableMapping]()
+	* [Test net Contract]()
+
+### v0.1.1: Testing on Rinkeby (yes if it works on Ethereum it works BNB Test)
+Checklist:
+[] UniswapV2 router address
+[] Deployed
+	* [Rinkeby IterableMapping]()
+	* [Rinkeby Contract]()
+[] Airdrop 10 wallets
+[] Is burnable?
+[] Add v2 liquidity to Uniswap
+[] Buy/Sell in 3 rounds
