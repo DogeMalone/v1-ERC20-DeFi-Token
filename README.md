@@ -166,13 +166,83 @@ Note: The called function should be payable if you send value and the value you 
 Debug the transaction to get more information.
 ```
 Note the remix... Let's fix this damn thing shall we?
-###v0.0.1: Upgrade of SafeMath, Ownable, IUniswapPair, IUinswapFactory, IUniswapV2Router to 0.8.6
+###v0.0.1: Upgrade of SafeMath, Ownable, IUniswapPair, IUinswapFactory, IUniswapV2Router to 0.8.7
 Not messing with DividendPayingToken or IterableMapping as of yet, next step is upgrading those.
+**Updated to ^0.8.7**
+Added Libraries:
+```
+@theanthill/pancake-swap-periphery (IPancakeRouter02.sol - no offical npm)
+@pancakeswap-libs/pancake-swap-core (IPancakeFactory.sol & IPancakePair.sol - offical npm)
+```
 
+Firesail of imports:
+```
+find /dogemalonedefi/contracts/ -type f -exec sed -i'' -e 's/IUniswapV2Router02/IPancakeRouter02/g' {} +
+find /dogemalonedefi/contracts/ -type f -exec sed -i'' -e 's/IUniswapV2Factory/IPancakeFactory/g' {} +
+```
+
+Must hot fix for v0.0.2 and v0.0.3 at same time
 ###v0.0.2: Upgrade of DividendPayingToken.sol (backbone of this rewards contract)
+Inserted into v0.0.1
+Hot fix into ^0.8.7 will make it "Math symbols" later >0.8.0
+```
+,Warning: Visibility for constructor is ignored. If you want the contract to be non-deployable, making it "abstract" is sufficient.
+  --> project:/contracts/DividendPayingToken.sol:44:3:
+   |
+44 |   constructor(string memory _name, string memory _symbol) public ERC20(_name, _symbol) {
+   |   ^ (Relevant source part starts here and spans across multiple lines).
 
+
+TypeError: Invalid type for argument in function call. Invalid implicit conversion from address to address payable requested.
+  --> project:/contracts/DividendPayingToken.sol:82:29:
+   |
+82 |     _withdrawDividendOfUser(msg.sender);
+   |                             ^^^^^^^^^^
+
+,TypeError: Member "toInt256Safe" not found or not visible after argument-dependent lookup in uint256.
+   --> project:/contracts/DividendPayingToken.sol:134:12:
+    |
+134 |     return magnifiedDividendPerShare.mul(balanceOf(_owner)).toInt256Safe()
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
+This is the new error, reinserting MathSafeUint.sol to rectify this. Reading more into libraries tomorrow.
+
+Afterwards:
+```
+,Warning: Visibility for constructor is ignored. If you want the contract to be non-deployable, making it "abstract" is sufficient.
+  --> project:/contracts/DividendPayingToken.sol:46:3:
+   |
+46 |   constructor(string memory _name, string memory _symbol) public ERC20(_name, _symbol) {
+   |   ^ (Relevant source part starts here and spans across multiple lines).
+
+,Warning: Visibility for constructor is ignored. If you want the contract to be non-deployable, making it "abstract" is sufficient.
+   --> project:/contracts/Tiki.sol:113:5:
+    |
+113 |     constructor() public ERC20("TIKI", "TIKI") {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+,Warning: Visibility for constructor is ignored. If you want the contract to be non-deployable, making it "abstract" is sufficient.
+   --> project:/contracts/Tiki.sol:521:5:
+    |
+521 |     constructor() public DividendPayingToken("TIKI_Dividend_Tracker", "TIKI_Dividend_Tracker") {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+TypeError: Invalid type for argument in function call. Invalid implicit conversion from address to address payable requested.
+  --> project:/contracts/DividendPayingToken.sol:84:29:
+   |
+84 |     _withdrawDividendOfUser(msg.sender);
+   |                             ^^^^^^^^^^
+
+,TypeError: Invalid type for argument in function call. Invalid implicit conversion from address to address payable requested.
+   --> project:/contracts/Tiki.sol:300:34:
+    |
+300 |           dividendTracker.processAccount(msg.sender, false);
+    |                                          ^^^^^^^^^^
+```
+Boom, we got v0.0.3 ready to roll. Will probably roll out a v0.0.4 package soon with type errors from above.
 ###v0.0.3: Upgrade of IterableMapping.sol
-
+Inserted into v0.0.1
 ###v0.1.0: Firesail of TIKI branding, removal of their excess functions, cleaning code to Certik/HashEx standards
 
 ###v0.1.1: Update of variables from immutable to functions and vice versa

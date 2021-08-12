@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.8.7;
 
 import "./DividendPayingToken.sol";
-import "./SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "./IterableMapping.sol";
-import "./Ownable.sol";
-import "./IUniswapV2Pair.sol";
-import "./IUniswapV2Factory.sol";
-import "./IUniswapV2Router.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakePair.sol";
+import "@pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakeFactory.sol";
+import "@theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter02.sol";
 
 contract TIKI is ERC20, Ownable {
     using SafeMath for uint256;
 
-    IUniswapV2Router02 public uniswapV2Router;
+    IPancakeRouter02 public uniswapV2Router;
     address public immutable uniswapV2Pair;
 
     address public immutable bounceFixedSaleWallet;
@@ -124,9 +124,9 @@ contract TIKI is ERC20, Ownable {
     	liquidityWallet = owner();
 
     	
-    	IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    	IPancakeRouter02 _uniswapV2Router = IPancakeRouter02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
          // Create a uniswap pair for this new token
-        address _uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
+        address _uniswapV2Pair = IPancakeFactory(_uniswapV2Router.factory())
             .createPair(address(this), _uniswapV2Router.WETH());
 
         uniswapV2Router = _uniswapV2Router;
@@ -183,7 +183,7 @@ contract TIKI is ERC20, Ownable {
     function updateUniswapV2Router(address newAddress) public onlyOwner {
         require(newAddress != address(uniswapV2Router), "TIKI: The router already has that address");
         emit UpdateUniswapV2Router(newAddress, address(uniswapV2Router));
-        uniswapV2Router = IUniswapV2Router02(newAddress);
+        uniswapV2Router = IPancakeRouter02(newAddress);
     }
 
     function excludeFromFees(address account, bool excluded) public onlyOwner {
