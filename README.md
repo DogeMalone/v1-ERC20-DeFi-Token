@@ -382,7 +382,10 @@ So what does that mean?
 
 The gameplan:
 - [ ] Fork pancakeswap's pancake-swap-core and pancake-swap-periphery, add SPDX lines, commit, deploy public npm's
-- [ ] Fix Context.sol multiple versions (one in TIKI now and different one in TIKI-Dividend)
+	- [x] Forked Repos
+	- [x] SPDX lines added
+	- [ ] npm package launched
+- [x] Fix Context.sol multiple versions, "orginal" removed
 - [ ] Look at mutability states, probably won't attempt to resolve
 - [ ] Look at require/reverts in both constructors
 - [ ] Trim the fat of Tiki.sol
