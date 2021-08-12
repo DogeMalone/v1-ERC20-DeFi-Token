@@ -381,20 +381,20 @@ So what does that mean?
 * Require/Revert statement in constructor - Tiki Dividend Token issue
 
 The gameplan:
-[] Fork pancakeswap's pancake-swap-core and pancake-swap-periphery, add SPDX lines, commit, deploy public npm's
-[] Fix Context.sol multiple versions (one in TIKI now and different one in TIKI-Dividend)
-[] Look at mutability states, probably won't attempt to resolve
-[] Look at require/reverts in both constructors
-[] Trim the fat of Tiki.sol
-[] Launch a copy on test-net
-[] Update README.md
+- [ ] Fork pancakeswap's pancake-swap-core and pancake-swap-periphery, add SPDX lines, commit, deploy public npm's
+- [ ] Fix Context.sol multiple versions (one in TIKI now and different one in TIKI-Dividend)
+- [ ] Look at mutability states, probably won't attempt to resolve
+- [ ] Look at require/reverts in both constructors
+- [ ] Trim the fat of Tiki.sol
+- [ ] Launch a copy on test-net
+- [ ] Update README.md
 
 ### v0.1.0: Tiki edition in 0.8.7 deployed... now let's modify it to suit Doge Malone standards!
 To Do List:
-[] Fire sail TIKI branding
-[] Modify immutable types to var (if using a function)
-[] Modify var to immutable types (if not using a function)
-[] Upgrade from HashEx audit
+- [ ] Fire sail TIKI branding
+- [ ] Modify immutable types to var (if using a function)
+- [ ] Modify var to immutable types (if not using a function)
+- [ ] Upgrade from HashEx audit
 	* ERC20: Unsafe Math -> now @openzepplin standards as of v0.0.1
 	* SafeMathInt -> must really look at this with dividend token
 	* TIKI: swapTokensForEth -> flash loan issues (medium)
@@ -410,7 +410,7 @@ To Do List:
 	* DPT: No transfers -> designed this way, will have ama on it later
 	* IterableMapping[]: change inserted[] to indexOf[]
 	* General: Yeah Tiki.sol is done, will get DPT upgraded as well
-[] Upgrade CertiK standards
+- [ ] Upgrade CertiK standards
 	* Auto-Payment: Needs more of a description nothing is automatic
 	* DPTOI.sol: Rebranding of what a function does in comments
 	* DPTOI.sol: Clean a function 148-150
@@ -423,17 +423,17 @@ To Do List:
 	* Tiki.sol: Irrelevant comments 441
 	* Tiki.sol: Return values, add sucess/failure options 463-469:479-486
 	* Tiki.sol: Typos 64
-[] Deploy alpha contract to BNBTest net
-	* [Test net IterableMapping]()
-	* [Test net Contract]()
+- [ ] Deploy alpha contract to BNBTest net
+	* [Test net IterableMapping](#)
+	* [Test net Contract](#)
 
 ### v0.1.1: Testing on Rinkeby (yes if it works on Ethereum it works BNB Test)
 Checklist:
-[] UniswapV2 router address
-[] Deployed
-	* [Rinkeby IterableMapping]()
-	* [Rinkeby Contract]()
-[] Airdrop 10 wallets
-[] Is burnable?
-[] Add v2 liquidity to Uniswap
-[] Buy/Sell in 3 rounds
+- [ ] UniswapV2 router address
+- [ ] Deployed
+	* [Rinkeby IterableMapping](#)
+	* [Rinkeby Contract](#)
+- [ ] Airdrop 10 wallets
+- [ ] Is burnable?
+- [ ] Add v2 liquidity to Uniswap
+- [ ] Buy/Sell in 3 rounds
