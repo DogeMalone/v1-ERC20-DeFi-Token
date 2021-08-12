@@ -1,5 +1,4 @@
 # Doge Malone DeFi ERC20 Token:
-## Orginal Setup by @MaxflowO2
 ### Requirements:
 1. Node.js - Latest 
 2. NPM - Latest
@@ -183,7 +182,7 @@ find /dogemalonedefi/contracts/ -type f -exec sed -i'' -e 's/IUniswapV2Factory/I
 
 Must hot fix for v0.0.2 and v0.0.3 at same time
 ### v0.0.2: Upgrade of DividendPayingToken.sol (backbone of this rewards contract)
-Inserted into v0.0.1
+Inserted into v0.0.1<br>
 Hot fix into ^0.8.7 will make it "Math symbols" later >0.8.0
 ```
 ,Warning: Visibility for constructor is ignored. If you want the contract to be non-deployable, making it "abstract" is sufficient.
@@ -240,10 +239,12 @@ TypeError: Invalid type for argument in function call. Invalid implicit conversi
 300 |           dividendTracker.processAccount(msg.sender, false);
     |                                          ^^^^^^^^^^
 ```
-Boom, we got v0.0.3 ready to roll. Will probably roll out a v0.0.4 package soon with type errors from above.
+Boom, we got v0.0.3 ready to roll. <br>
+Will probably roll out a v0.0.4 package soon with type errors from above.
 ### v0.0.3: Upgrade of IterableMapping.sol
-Inserted into v0.0.1
+Inserted into v0.0.1<br>
 This has been updated to ^0.8.7
+### v0.0.4: Upgrade code to 0.8.7 standards
 ### v0.1.0: Firesail of TIKI branding, removal of their excess functions, cleaning code to Certik/HashEx standards
 
 ### v0.1.1: Update of variables from immutable to functions and vice versa
