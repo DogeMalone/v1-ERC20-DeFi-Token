@@ -1,6 +1,6 @@
-#Doge Malone DeFi ERC20 Token:
-##Orginal Setup by @MaxflowO2
-###Requirements:
+# Doge Malone DeFi ERC20 Token:
+## Orginal Setup by @MaxflowO2
+### Requirements:
 1. Node.js - Latest 
 2. NPM - Latest
 3. Truffle - Latest
@@ -20,7 +20,7 @@
 13. create .gitignore
   * add .env
 
-###Alpha Test
+### Alpha Test
 ```
 truffle deploy --network BNBTest
 
@@ -81,15 +81,15 @@ Pass - Verified: https://testnet.bscscan.com/address/0x8Fe17E73FD6704162D64FAf70
 ```
 Script is completely functional
 
-###Objectives:
+### Objectives:
 After paging through the orginal sources found below, with the two security audits, we at Doge Malone are upgrading this contract to v0.8.6 in order to fix a plethora of issues found.
 
 Original Sources:
-*[bscscan.com uploaded source](https://bscscan.com/address/0x9b76d1b12ff738c113200eb043350022ebf12ff0#code)
-*[HashEx audit](https://github.com/HashEx/public_audits/tree/master/TIKI)
-*[Certik audit](https://certik-public-assets.s3.amazonaws.com/REP-Tiki-Finance-2021-08-07.pdf)
+* [bscscan.com uploaded source](https://bscscan.com/address/0x9b76d1b12ff738c113200eb043350022ebf12ff0#code)
+* [HashEx audit](https://github.com/HashEx/public_audits/tree/master/TIKI)
+* [Certik audit](https://certik-public-assets.s3.amazonaws.com/REP-Tiki-Finance-2021-08-07.pdf)
 
-###v0.0.0: 1:1 Tiki Clone
+### v0.0.0: 1:1 Tiki Clone
 This is a clone of Tiki Finance Token, doing a simple deployment with 2_deploy_0.0.0.js
 
 Under directory ./contracts/
@@ -166,7 +166,7 @@ Note: The called function should be payable if you send value and the value you 
 Debug the transaction to get more information.
 ```
 Note the remix... Let's fix this damn thing shall we?
-###v0.0.1: Upgrade of SafeMath, Ownable, IUniswapPair, IUinswapFactory, IUniswapV2Router to 0.8.7
+### v0.0.1: Upgrade of SafeMath, Ownable, IUniswapPair, IUinswapFactory, IUniswapV2Router to 0.8.7
 Not messing with DividendPayingToken or IterableMapping as of yet, next step is upgrading those.
 **Updated to ^0.8.7**
 Added Libraries:
@@ -182,7 +182,7 @@ find /dogemalonedefi/contracts/ -type f -exec sed -i'' -e 's/IUniswapV2Factory/I
 ```
 
 Must hot fix for v0.0.2 and v0.0.3 at same time
-###v0.0.2: Upgrade of DividendPayingToken.sol (backbone of this rewards contract)
+### v0.0.2: Upgrade of DividendPayingToken.sol (backbone of this rewards contract)
 Inserted into v0.0.1
 Hot fix into ^0.8.7 will make it "Math symbols" later >0.8.0
 ```
@@ -241,8 +241,9 @@ TypeError: Invalid type for argument in function call. Invalid implicit conversi
     |                                          ^^^^^^^^^^
 ```
 Boom, we got v0.0.3 ready to roll. Will probably roll out a v0.0.4 package soon with type errors from above.
-###v0.0.3: Upgrade of IterableMapping.sol
+### v0.0.3: Upgrade of IterableMapping.sol
 Inserted into v0.0.1
-###v0.1.0: Firesail of TIKI branding, removal of their excess functions, cleaning code to Certik/HashEx standards
+This has been updated to ^0.8.7
+### v0.1.0: Firesail of TIKI branding, removal of their excess functions, cleaning code to Certik/HashEx standards
 
-###v0.1.1: Update of variables from immutable to functions and vice versa
+### v0.1.1: Update of variables from immutable to functions and vice versa
