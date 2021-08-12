@@ -387,45 +387,50 @@ The gameplan:
 	- [ ] npm package launched
 - [x] Fix Context.sol multiple versions, "orginal" removed
 - [ ] Look at mutability states, probably won't attempt to resolve
+	- [ ] Crossref ERC20/EIP20 on _mint()
 - [ ] Look at require/reverts in both constructors
+	- [x] Inital contract shows plenty requires
 - [ ] Trim the fat of Tiki.sol
+	- [x] Uploaded BNBack.sol "meat & potatoes"
+	- [ ] Fixed new errors
 - [ ] Launch a copy on test-net
 - [ ] Update README.md
 
 ### v0.1.0: Tiki edition in 0.8.7 deployed... now let's modify it to suit Doge Malone standards!
 To Do List:
 - [ ] Fire sail TIKI branding
-- [ ] Modify immutable types to var (if using a function)
-- [ ] Modify var to immutable types (if not using a function)
+- [x] Modify immutable types to var (if using a function)
+- [x] Modify var to immutable types (if not using a function)
+- [ ] Modify/Create Var/Functions for Doge Malone
 - [ ] Upgrade from HashEx audit
-	* ERC20: Unsafe Math -> now @openzepplin standards as of v0.0.1
-	* SafeMathInt -> must really look at this with dividend token
-	* TIKI: swapTokensForEth -> flash loan issues (medium)
-	* TIKI: hardcoded addresses -> will change all to functions
-	* TIKI: BEP20 standards -> fixing to @openzepplin standards
-	* TIKI: _transfer() in Dividend Token
-	* TIKI: tx is limited to WETH pair
-	* DPT: BNB transfers and gas limit
-	* TIKI: indexing
-	* TIKI: fees (var/constant), same as addresses
-	* TIKI: multiple checks if amount>0
-	* TIKI: taxFee -> BNBRewardsFee: going to rename this again because of Johnny rule
-	* DPT: No transfers -> designed this way, will have ama on it later
-	* IterableMapping[]: change inserted[] to indexOf[]
-	* General: Yeah Tiki.sol is done, will get DPT upgraded as well
+	- [x] ERC20: Unsafe Math -> now @openzepplin standards as of v0.0.1
+	- [ ] SafeMathInt -> must really look at this with dividend token
+	- [ ] TIKI: swapTokensForEth -> flash loan issues (medium)
+	- [x] TIKI: hardcoded addresses -> will change all to functions
+	- [x] TIKI: BEP20 standards -> fixing to @openzepplin standards
+	- [x] TIKI: _transfer() in Dividend Token
+	- [ ] TIKI: tx is limited to WETH pair
+	- [ ] DPT: BNB transfers and gas limit
+	- [ ] TIKI: indexing
+	- [ ] TIKI: fees (var/constant), same as addresses
+	- [ ] TIKI: multiple checks if amount>0
+	- [x] TIKI: taxFee -> BNBRewardsFee: going to rename this again because of Johnny rule
+	- [ ] DPT: No transfers -> designed this way, will have ama on it later
+	- [ ] IterableMapping[]: change inserted[] to indexOf[]
+	- [ ] General: Yeah Tiki.sol is done, will get DPT upgraded as well
 - [ ] Upgrade CertiK standards
-	* Auto-Payment: Needs more of a description nothing is automatic
-	* DPTOI.sol: Rebranding of what a function does in comments
-	* DPTOI.sol: Clean a function 148-150
-	* Tiki.sol: 3rd Party Deps - Minor
-	* Tiki.sol: Unreachable code (same as HashEx)
-	* Tiki.sol: FixedSaleWallet - remove 100% 141-145:173-176
-	* Tiki.sol: Owner is multi-sig wallet 183-212:534-542:633-648:230-235
-	* Tiki.sol: Add emit 409, 412, 633
-	* Tiki.sol: isFixedSaleBuy 336-340
-	* Tiki.sol: Irrelevant comments 441
-	* Tiki.sol: Return values, add sucess/failure options 463-469:479-486
-	* Tiki.sol: Typos 64
+	- [ ] Auto-Payment: Needs more of a description nothing is automatic
+	- [ ] DPTOI.sol: Rebranding of what a function does in comments
+	- [ ] DPTOI.sol: Clean a function 148-150
+	- [ ] Tiki.sol: 3rd Party Deps - Minor
+	- [ ] Tiki.sol: Unreachable code (same as HashEx)
+	- [ ] Tiki.sol: FixedSaleWallet - remove 100% 141-145:173-176
+	- [ ] Tiki.sol: Owner is multi-sig wallet 183-212:534-542:633-648:230-235
+	- [x] Tiki.sol: Add emit 409, 412, 633
+	- [ ] Tiki.sol: isFixedSaleBuy 336-340
+	- [ ] Tiki.sol: Irrelevant comments 441
+	- [ ] Tiki.sol: Return values, add sucess/failure options 463-469:479-486
+	- [ ] Tiki.sol: Typos 64
 - [ ] Deploy alpha contract to BNBTest net
 	* [Test net IterableMapping](#)
 	* [Test net Contract](#)
