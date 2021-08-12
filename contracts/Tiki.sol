@@ -110,7 +110,7 @@ contract TIKI is ERC20, Ownable {
     	address indexed processor
     );
 
-    constructor() public ERC20("TIKI", "TIKI") {
+    constructor() ERC20("TIKI", "TIKI") {
         uint256 _BNBRewardsFee = 10;
         uint256 _liquidityFee = 5;
 
@@ -297,7 +297,7 @@ contract TIKI is ERC20, Ownable {
     }
 
     function claim() external {
-		dividendTracker.processAccount(msg.sender, false);
+		dividendTracker.processAccount(payable(msg.sender), false);
     }
 
     function getLastProcessedIndex() external view returns(uint256) {
@@ -518,7 +518,7 @@ contract TIKIDividendTracker is DividendPayingToken, Ownable {
 
     event Claim(address indexed account, uint256 amount, bool indexed automatic);
 
-    constructor() public DividendPayingToken("TIKI_Dividend_Tracker", "TIKI_Dividend_Tracker") {
+    constructor() DividendPayingToken("TIKI_Dividend_Tracker", "TIKI_Dividend_Tracker") {
     	claimWait = 3600;
         minimumTokenBalanceForDividends = 10000 * (10**18); //must hold 10000+ tokens
     }

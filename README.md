@@ -245,6 +245,132 @@ Will probably roll out a v0.0.4 package soon with type errors from above.
 Inserted into v0.0.1<br>
 This has been updated to ^0.8.7
 ### v0.0.4: Upgrade code to 0.8.7 standards
+ChangeLog:
+* `constructor(string memory _name, string memory _symbol) public ERC20(_name, _symbol)` now `constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol)`: --> project:/contracts/DividendPayingToken.sol:46:3<br>
+* `constructor() public ERC20("TIKI", "TIKI")` now `constructor() ERC20("TIKI", "TIKI")`: --> project:/contracts/Tiki.sol:113:5<br>
+* `constructor() public DividendPayingToken("TIKI_Dividend_Tracker", "TIKI_Dividend_Tracker")` now `constructor() DividendPayingToken("TIKI_Dividend_Tracker", "TIKI_Dividend_Tracker")`: --> project:/contracts/Tiki.sol:521:5<br>
+* `_withdrawDividendOfUser(msg.sender);` now `_withdrawDividendOfUser(payable(msg.sender));`: --> project:/contracts/DividendPayingToken.sol:84:29
+* `dividendTracker.processAccount(msg.sender, false);` now `dividendTracker.processAccount(payable(msg.sender), false);`: --> project:/contracts/Tiki.sol:300:34
+Current Readout
+```
+truffle deploy --network BNBTest
+
+Compiling your contracts...
+===========================
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Compiling ./contracts/Context.sol
+> Compiling ./contracts/DividendPayingToken.sol
+> Compiling ./contracts/DividendPayingTokenInterface.sol
+> Compiling ./contracts/DividendPayingTokenOptionalInterface.sol
+> Compiling ./contracts/IterableMapping.sol
+> Compiling ./contracts/Migrations.sol
+> Compiling ./contracts/SafeMathInt.sol
+> Compiling ./contracts/SafeMathUint.sol
+> Compiling ./contracts/Tiki.sol
+> Compiling @openzeppelin/contracts/access/Ownable.sol
+> Compiling @openzeppelin/contracts/token/ERC20/ERC20.sol
+> Compiling @openzeppelin/contracts/token/ERC20/IERC20.sol
+> Compiling @openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol
+> Compiling @openzeppelin/contracts/utils/Context.sol
+> Compiling @openzeppelin/contracts/utils/math/SafeMath.sol
+> Compiling @pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakeFactory.sol
+> Compiling @pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakePair.sol
+> Compiling @theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter01.sol
+> Compiling @theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter02.sol
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Compilation warnings encountered:
+
+    Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakeFactory.sol
+
+,Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakePair.sol
+
+,Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter01.sol
+
+,Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter02.sol
+
+,Warning: Function state mutability can be restricted to pure
+   --> project:/contracts/Tiki.sol:526:5:
+    |
+526 |     function _transfer(address, address, uint256) internal override {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+,Warning: Function state mutability can be restricted to pure
+   --> project:/contracts/Tiki.sol:530:5:
+    |
+530 |     function withdrawDividend() public override {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+,Warning: Contract code size exceeds 24576 bytes (a limit introduced in Spurious Dragon). This contract may not be deployable on mainnet. Consider enabling the optimizer (with a low "runs" value!), turning off revert strings, or using libraries.
+  --> project:/contracts/Tiki.sol:13:1:
+   |
+13 | contract TIKI is ERC20, Ownable {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+
+
+> Artifacts written to /dogemalonedefi/build/contracts
+> Compiled successfully using:
+   - solc: 0.8.7+commit.e28d00a7.Emscripten.clang
+
+
+> Duplicate contract names found for Context.
+> This can cause errors and unknown behavior. Please rename one of your contracts.
+
+
+Starting migrations...
+======================
+> Network name:    'BNBTest'
+> Network id:      97
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+2_deploy_contract.js
+====================
+
+   Deploying 'IterableMapping'
+   ---------------------------
+   > transaction hash:    0x9d1624365384919c16727bb51b53dae9312e3d8ee0eb68dff579eaa2015a2df9
+   > Blocks: 3            Seconds: 8
+   > contract address:    0x69B7376072b1B442FF680170E98008056Ca579b6
+   > block number:        11406350
+   > block timestamp:     1628745747
+   > account:             0xdB898C319a67A7e647Dc570d5d20FA4d64A093F3
+   > balance:             9.24136406
+   > gas used:            660809 (0xa1549)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00660809 ETH
+
+   Pausing for 5 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 11406353)
+   > confirmation number: 3 (block: 11406354)
+   > confirmation number: 4 (block: 11406355)
+   > confirmation number: 6 (block: 11406357)
+
+
+   Linking
+   -------
+   * Contract: TIKI <--> Library: IterableMapping (at address: 0x69B7376072b1B442FF680170E98008056Ca579b6)
+
+   Deploying 'TIKI'
+   ----------------
+   > transaction hash:    0x247a4fbaf3e408317e9f5bad0c0c40a7449e5e78570b247690b24bf131e96b3d
+
+Error:  *** Deployment Failed ***
+
+"TIKI" hit a require or revert statement somewhere in its constructor. Try:
+   * Verifying that your constructor params satisfy all require conditions.
+   * Adding reason strings to your require statements.
+
+    at /usr/local/lib/node_modules/truffle/build/webpack:/packages/deployer/src/deployment.js:365:1
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Truffle v5.4.5 (core: 5.4.5)
+Node v10.19.0
+```
 ### v0.1.0: Firesail of TIKI branding, removal of their excess functions, cleaning code to Certik/HashEx standards
 
 ### v0.1.1: Update of variables from immutable to functions and vice versa

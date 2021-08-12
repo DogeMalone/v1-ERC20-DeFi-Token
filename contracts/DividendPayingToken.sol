@@ -43,7 +43,7 @@ contract DividendPayingToken is ERC20, DividendPayingTokenInterface, DividendPay
 
   uint256 public totalDividendsDistributed;
 
-  constructor(string memory _name, string memory _symbol) public ERC20(_name, _symbol) {
+  constructor(string memory _name, string memory _symbol) ERC20(_name, _symbol) {
 
   }
 
@@ -81,7 +81,7 @@ contract DividendPayingToken is ERC20, DividendPayingTokenInterface, DividendPay
   /// @notice Withdraws the ether distributed to the sender.
   /// @dev It emits a `DividendWithdrawn` event if the amount of withdrawn ether is greater than 0.
   function withdrawDividend() public virtual override {
-    _withdrawDividendOfUser(msg.sender);
+    _withdrawDividendOfUser(payable(msg.sender));
   }
 
   /// @notice Withdraws the ether distributed to the sender.
