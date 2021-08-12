@@ -13,7 +13,7 @@ import "@theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter02
 contract BNBack is ERC20, Ownable {
   using SafeMath for uint256;
 
-  IUniswapV2Router02 public uniswapV2Router;
+  IPancakeRouter02 public uniswapV2Router;
   address public  uniswapV2Pair;
 
   bool private swapping;
@@ -35,7 +35,7 @@ contract BNBack is ERC20, Ownable {
   uint256 public liquidityFee = 2;
   uint256 public marketingFee = 3;
   uint256 public totalFees = BNBRewardsFee.add(liquidityFee).add(marketingFee);
-  address payable public _marketingWalletAddress = 0x5D4411A256F49239F7F9FD51934FE32cca9BDD65;
+  address payable public _marketingWalletAddress = payable(0x5D4411A256F49239F7F9FD51934FE32cca9BDD65);
 
   // use by default 300,000 gas to process auto-claiming dividends
   uint256 public gasForProcessing = 300000;
@@ -81,14 +81,14 @@ contract BNBack is ERC20, Ownable {
     address indexed processor
     );
 
-  constructor() public ERC20("BNBack", "BNBK") {
+  constructor() ERC20("BNBack", "BNBK") {
 
     dividendTracker = new BNBackDividendTracker();
 
-    IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    IPancakeRouter02 _uniswapV2Router = IPancakeRouter02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
     // Create a uniswap pair for this new token
-    address _uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory()).createPair(address(this), _uniswapV2Router.WETH());
+    address _uniswapV2Pair = IPancakeFactory(_uniswapV2Router.factory()).createPair(address(this), _uniswapV2Router.WETH());
     uniswapV2Router = _uniswapV2Router;
     uniswapV2Pair = _uniswapV2Pair;
 
@@ -129,8 +129,8 @@ contract BNBack is ERC20, Ownable {
   function updateUniswapV2Router(address newAddress) public onlyOwner {
     require(newAddress != address(uniswapV2Router), "BNBack: The router already has that address");
     emit UpdateUniswapV2Router(newAddress, address(uniswapV2Router));
-    uniswapV2Router = IUniswapV2Router02(newAddress);
-    address _uniswapV2Pair = IUniswapV2Factory(uniswapV2Router.factory()).createPair(address(this), uniswapV2Router.WETH());
+    uniswapV2Router = IPancakeRouter02(newAddress);
+    address _uniswapV2Pair = IPancakeFactory(uniswapV2Router.factory()).createPair(address(this), uniswapV2Router.WETH());
     uniswapV2Pair = _uniswapV2Pair;
     }
 
@@ -270,7 +270,7 @@ contract BNBack is ERC20, Ownable {
     }
 
     function claim() external {
-		dividendTracker.processAccount(msg.sender, false);
+		dividendTracker.processAccount(payable(msg.sender), false);
     }
 
     function getLastProcessedIndex() external view returns(uint256) {
@@ -453,6 +453,7 @@ contract BNBack is ERC20, Ownable {
     
 }
 
+// DividendTracker Contract
 contract BNBackDividendTracker is DividendPayingToken, Ownable {
     using SafeMath for uint256;
     using SafeMathInt for int256;
@@ -473,16 +474,16 @@ contract BNBackDividendTracker is DividendPayingToken, Ownable {
 
     event Claim(address indexed account, uint256 amount, bool indexed automatic);
 
-    constructor() public DividendPayingToken("BNBack_Dividend_Tracker", "BNBack_Dividend_Tracker") {
+    constructor() DividendPayingToken("BNBack_Dividend_Tracker", "BNBack_Dividend_Tracker") {
     	claimWait = 3600;
         minimumTokenBalanceForDividends = 10000000000 * (10**18); //must hold 10000+ tokens
     }
 
-    function _transfer(address, address, uint256) internal override {
+    function _transfer(address, address, uint256) internal pure override {
         require(false, "BNBack_Dividend_Tracker: No transfers allowed");
     }
 
-    function withdrawDividend() public override {
+    function withdrawDividend() public pure override {
         require(false, "BNBack_Dividend_Tracker: withdrawDividend disabled. Use the 'claim' function on the main BNBack contract.");
     }
 

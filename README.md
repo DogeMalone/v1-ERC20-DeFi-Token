@@ -386,19 +386,19 @@ The gameplan:
 	- [x] SPDX lines added
 	- [ ] npm package launched
 - [x] Fix Context.sol multiple versions, "orginal" removed
-- [ ] Look at mutability states, probably won't attempt to resolve
-	- [ ] Crossref ERC20/EIP20 on _mint()
+- [x] Look at mutability states, probably won't attempt to resolve
 - [ ] Look at require/reverts in both constructors
 	- [x] Inital contract shows plenty requires
-- [ ] Trim the fat of Tiki.sol
+- [x] Trim the fat of Tiki.sol
 	- [x] Uploaded BNBack.sol "meat & potatoes"
-	- [ ] Fixed new errors
+	- [x] Fixed new errors
+	- [ ] Size...
 - [ ] Launch a copy on test-net
 - [ ] Update README.md
 
 ### v0.1.0: Tiki edition in 0.8.7 deployed... now let's modify it to suit Doge Malone standards!
 To Do List:
-- [ ] Fire sail TIKI branding
+- [ ] Fire sail the <del>TIKI</del> BNBack branding
 - [x] Modify immutable types to var (if using a function)
 - [x] Modify var to immutable types (if not using a function)
 - [ ] Modify/Create Var/Functions for Doge Malone
