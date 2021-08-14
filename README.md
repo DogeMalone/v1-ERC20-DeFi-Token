@@ -586,9 +586,9 @@ v0.0.4 is launched!
 
 ### v0.1.0: Tiki edition in 0.8.7 deployed... now let's modify it to suit Doge Malone standards!
 To Do List:
-- [ ] Fire sail the <del>TIKI</del> BNBack branding
-	- [ ] Now should say Doge Malone
-	- [ ] Uniswap -> Pancakeswap
+- [x] Fire sail the <del>TIKI</del> BNBack branding
+	- [x] Now should say Doge Malone
+	- [x] Uniswap -> Pancakeswap
 - [x] Modify immutable types to var (if using a function)
 - [x] Modify var to immutable types (if not using a function)
 - [ ] Modify/Create Var/Functions for Doge Malone
@@ -596,38 +596,48 @@ To Do List:
 	- [ ] All vars updated
 - [ ] Upgrade from HashEx audit
 	- [x] ERC20: Unsafe Math -> now @openzepplin standards as of v0.0.1
-	- [ ] SafeMathInt -> must really look at this with dividend token
-	- [ ] TIKI: swapTokensForEth -> flash loan issues (medium)
+	- [x] SafeMathInt -> must really look at this with dividend token
+		* Moves int => uint256
+		* Alomst identical to SafeMath
+	- [x] TIKI: swapTokensForEth -> flash loan issues (medium)
+		* Code error on pancakeswapV2Router02, vampire loans from sushi
 	- [x] TIKI: hardcoded addresses -> will change all to functions
 	- [x] TIKI: BEP20 standards -> fixing to @openzepplin standards
 	- [x] TIKI: _transfer() in Dividend Token
-	- [ ] TIKI: tx is limited to WETH pair
+	- [x] TIKI: tx is limited to WETH pair
+		* Well we don't plan on BSUD rewards
 	- [ ] DPT: BNB transfers and gas limit
 	- [ ] TIKI: indexing
 	- [ ] TIKI: fees (var/constant), same as addresses
-	- [ ] TIKI: multiple checks if amount>0
+	- [x] TIKI: multiple checks if amount > 0
+		* Removed from constructor, kept in external functions
 	- [x] TIKI: taxFee -> BNBRewardsFee: going to rename this again because of Johnny rule
-	- [ ] DPT: No transfers -> designed this way, will have ama on it later
-	- [ ] IterableMapping[]: change inserted[] to indexOf[]
-	- [ ] General: Yeah Tiki.sol is done, will get DPT upgraded as well
+	- [x] DPT: No transfers -> designed this way, will have ama on it later
+	- [x] IterableMapping[]: change inserted[] to indexOf[]
+		* Insert a gif, that's a no from me dawg
+		* Not all are indexes, some need to be inserted
+	- [x] General: Yeah Tiki.sol is done, will get DPT upgraded as well
 - [ ] Upgrade CertiK standards
 	- [x] Auto-Payment: Needs more of a description nothing is automatic
-	- [ ] DPTOI.sol: Rebranding of what a function does in comments
-	- [ ] DPTOI.sol: Clean a function 148-150
+	- [x] DPTOI.sol: Rebranding of what a function does in comments
+	- [x] DPTOI.sol: Clean a function 148-150
+		* Not planning on cleaning another person's libraries
+		* 3rd party issues, could host npm with it fixed later
 	- [x] Tiki.sol: 3rd Party Deps - Minor
 		* Hosted git repos from pancakeswap since they dont
 		* Upgraded the enviroment to truffle
 		* Added SPDX headers for less errors (GPL3)
 	- [ ] Tiki.sol: Unreachable code (same as HashEx)
-	- [ ] Tiki.sol: FixedSaleWallet - remove 100% 141-145:173-176
-	- [ ] Tiki.sol: Owner is multi-sig wallet 183-212:534-542:633-648:230-235
-		* Making a list of who shouldn't be getting dividends, adding those to tx to save gas
+	- [x] Tiki.sol: FixedSaleWallet - remove 100% 141-145:173-176
+	- [x] Tiki.sol: Owner is multi-sig wallet 183-212:534-542:633-648:230-235
+		* We have one, will add to AMA
 	- [x] Tiki.sol: Add emit 409, 412, 633
 	- [ ] Tiki.sol: isFixedSaleBuy 336-340
 	- [x] Tiki.sol: Irrelevant comments 441
 	- [ ] Tiki.sol: Return values, add sucess/failure options 463-469:479-486
 	- [ ] Tiki.sol: Typos 64
 - [ ] Deploy alpha contract to BNBTest net
+	- [x] Fix variables to our parameters
 	* [Test net IterableMapping](#)
 	* [Test net Contract](#)
 
