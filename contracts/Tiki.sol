@@ -85,14 +85,14 @@ contract BNBack is ERC20, Ownable {
 
     dividendTracker = new BNBackDividendTracker();
 
-    IPancakeRouter02 _uniswapV2Router = IPancakeRouter02(0xD99D1c33F9fC3444f8101754aBC46c52416550D1);
+    //IPancakeRouter02 _uniswapV2Router = IPancakeRouter02(0xD99D1c33F9fC3444f8101754aBC46c52416550D1);
 
     // Create a uniswap pair for this new token
-    address _uniswapV2Pair = IPancakeFactory(_uniswapV2Router.factory()).createPair(address(this), _uniswapV2Router.WETH());
-    uniswapV2Router = _uniswapV2Router;
-    uniswapV2Pair = _uniswapV2Pair;
+    //address _uniswapV2Pair = IPancakeFactory(_uniswapV2Router.factory()).createPair(address(this), _uniswapV2Router.WETH());
+    //uniswapV2Router = _uniswapV2Router;
+    //uniswapV2Pair = _uniswapV2Pair;
 
-    _setAutomatedMarketMakerPair(_uniswapV2Pair, true);
+    //_setAutomatedMarketMakerPair(_uniswapV2Pair, true);
 
     // exclude from receiving dividends - blocking for now
     //dividendTracker.excludeFromDividends(address(dividendTracker));

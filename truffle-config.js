@@ -67,7 +67,7 @@ module.exports = {
         return new HDWalletProvider(process.env.MNEMONIC, `https://data-seed-prebsc-2-s1.binance.org:8545`);
       },
       network_id: 97,
-      gas: 4500000,
+      gas: 10000000,
       confirmations: 5,
       timeoutBlocks: 200,
       skipDryRun: true

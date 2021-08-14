@@ -387,21 +387,213 @@ The gameplan:
 	- [ ] npm package launched
 - [x] Fix Context.sol multiple versions, "orginal" removed
 - [x] Look at mutability states, probably won't attempt to resolve
-- [ ] Look at require/reverts in both constructors
+- [x] Look at require/reverts in both constructors
 	- [x] Inital contract shows plenty requires
 - [x] Trim the fat of Tiki.sol
 	- [x] Uploaded BNBack.sol "meat & potatoes"
 	- [x] Fixed new errors
 	- [ ] Size...
-- [ ] Launch a copy on test-net
-- [ ] Update README.md
+- [x] Launch a copy on test-net
+- [x] Update README.md
+
+```
+truffle migrate --network BNBTest
+
+Compiling your contracts...
+===========================
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Compiling ./contracts/DividendPayingToken.sol
+> Compiling ./contracts/DividendPayingTokenInterface.sol
+> Compiling ./contracts/DividendPayingTokenOptionalInterface.sol
+> Compiling ./contracts/IterableMapping.sol
+> Compiling ./contracts/Migrations.sol
+> Compiling ./contracts/SafeMathInt.sol
+> Compiling ./contracts/SafeMathUint.sol
+> Compiling ./contracts/Tiki.sol
+> Compiling @openzeppelin/contracts/access/Ownable.sol
+> Compiling @openzeppelin/contracts/token/ERC20/ERC20.sol
+> Compiling @openzeppelin/contracts/token/ERC20/IERC20.sol
+> Compiling @openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol
+> Compiling @openzeppelin/contracts/utils/Context.sol
+> Compiling @openzeppelin/contracts/utils/math/SafeMath.sol
+> Compiling @pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakeFactory.sol
+> Compiling @pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakePair.sol
+> Compiling @theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter01.sol
+> Compiling @theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter02.sol
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Compilation warnings encountered:
+
+    Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakeFactory.sol
+
+,Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @pancakeswap-libs/pancake-swap-core/contracts/interfaces/IPancakePair.sol
+
+,Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter01.sol
+
+,Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> @theanthill/pancake-swap-periphery/contracts/interfaces/IPancakeRouter02.sol
+
+
+> Artifacts written to /solidity-dev/Doge-Malone-v1-ERC20-DeFi/build/contracts
+> Compiled successfully using:
+   - solc: 0.8.7+commit.e28d00a7.Emscripten.clang
+
+
+
+Starting migrations...
+======================
+> Network name:    'BNBTest'
+> Network id:      97
+> Block gas limit: 30000000 (0x1c9c380)
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x73182df2884bd08505e89ab8c2f3aa19da6c8e7c21e4a129791147d580c37040
+   > Blocks: 3            Seconds: 8
+   > contract address:    0xFCa09C9160E5Dfd9234C1d9611313329D4f1D5b8
+   > block number:        11460694
+   > block timestamp:     1628908814
+   > account:             0xdB898C319a67A7e647Dc570d5d20FA4d64A093F3
+   > balance:             10.57819726
+   > gas used:            169642 (0x296aa)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00169642 ETH
+
+   Pausing for 5 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11460696)
+   > confirmation number: 3 (block: 11460698)
+   > confirmation number: 4 (block: 11460699)
+   > confirmation number: 5 (block: 11460700)
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00169642 ETH
+
+2_deploy_contract.js
+====================
+
+   Deploying 'IterableMapping'
+   ---------------------------
+   > transaction hash:    0x8eaea6b74639cb8ff9f3fcdf8fb902ce198081b58efc3c76f37c41b211219f19
+   > Blocks: 3            Seconds: 8
+   > contract address:    0xfCcF246A6Ea944d5FA7f2b80c7B851a3268C70d1
+   > block number:        11460708
+   > block timestamp:     1628908856
+   > account:             0xdB898C319a67A7e647Dc570d5d20FA4d64A093F3
+   > balance:             10.57441264
+   > gas used:            336184 (0x52138)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00336184 ETH
+
+   Pausing for 5 confirmations...
+   ------------------------------
+   > confirmation number: 1 (block: 11460710)
+   > confirmation number: 3 (block: 11460712)
+   > confirmation number: 4 (block: 11460713)
+   > confirmation number: 5 (block: 11460714)
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00336184 ETH
+
+3_deploy_contract.js
+====================
+
+   Linking
+   -------
+   * Contract: BNBackDividendTracker <--> Library: IterableMapping (at address: 0xfCcF246A6Ea944d5FA7f2b80c7B851a3268C70d1)
+
+   Deploying 'BNBackDividendTracker'
+   ---------------------------------
+   > transaction hash:    0xe9c47078f2c291cdc2a61e724f00d176817afeedb63751f721b9d56167f6b2fc
+   > Blocks: 3            Seconds: 8
+   > contract address:    0x9b3b29f06eF8f276461073A46BD74412F862CC57
+   > block number:        11460721
+   > block timestamp:     1628908895
+   > account:             0xdB898C319a67A7e647Dc570d5d20FA4d64A093F3
+   > balance:             10.55370201
+   > gas used:            2043785 (0x1f2f89)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.02043785 ETH
+
+   Pausing for 5 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 11460724)
+   > confirmation number: 3 (block: 11460725)
+   > confirmation number: 4 (block: 11460726)
+   > confirmation number: 6 (block: 11460728)
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.02043785 ETH
+
+4_deploy_contract.js
+====================
+
+   Linking
+   -------
+   * Contract: BNBack <--> Library: IterableMapping (at address: 0xfCcF246A6Ea944d5FA7f2b80c7B851a3268C70d1)
+
+   Deploying 'BNBack'
+   ------------------
+   > transaction hash:    0x5cc67ce975f3ce30ec3722eecaf12d037e12404eee9a96f16827a863725cbf68
+   > Blocks: 3            Seconds: 8
+   > contract address:    0xB5255E56370657deBf1eb0Ff5E55b612f9ab1AC2
+   > block number:        11460734
+   > block timestamp:     1628908934
+   > account:             0xdB898C319a67A7e647Dc570d5d20FA4d64A093F3
+   > balance:             10.49743002
+   > gas used:            5599921 (0x5572b1)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.05599921 ETH
+
+   Pausing for 5 confirmations...
+   ------------------------------
+   > confirmation number: 2 (block: 11460737)
+   > confirmation number: 3 (block: 11460738)
+   > confirmation number: 4 (block: 11460739)
+   > confirmation number: 6 (block: 11460741)
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.05599921 ETH
+
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.08149532 ETH
+```
+v0.0.4 is launched!
+* [Test net Migrations](https://testnet.bscscan.com/address/0xFCa09C9160E5Dfd9234C1d9611313329D4f1D5b8#contracts)
+* [Test net IterableMapping](https://testnet.bscscan.com/address/0xfCcF246A6Ea944d5FA7f2b80c7B851a3268C70d1#contracts)
+* [Test net ERC20 "BNBack" for now](https://testnet.bscscan.com/address/0xB5255E56370657deBf1eb0Ff5E55b612f9ab1AC2#contracts)
+* [Test net Token Tracker](https://testnet.bscscan.com/address/0x9b3b29f06eF8f276461073A46BD74412F862CC57#contracts)
 
 ### v0.1.0: Tiki edition in 0.8.7 deployed... now let's modify it to suit Doge Malone standards!
 To Do List:
 - [ ] Fire sail the <del>TIKI</del> BNBack branding
+	- [ ] Now should say Doge Malone
+	- [ ] Uniswap -> Pancakeswap
 - [x] Modify immutable types to var (if using a function)
 - [x] Modify var to immutable types (if not using a function)
 - [ ] Modify/Create Var/Functions for Doge Malone
+	- [x] Nothing is immutable as of now, constructor() is clean minus new DividendTracker and _mint()
+	- [ ] All vars updated
 - [ ] Upgrade from HashEx audit
 	- [x] ERC20: Unsafe Math -> now @openzepplin standards as of v0.0.1
 	- [ ] SafeMathInt -> must really look at this with dividend token
@@ -419,16 +611,20 @@ To Do List:
 	- [ ] IterableMapping[]: change inserted[] to indexOf[]
 	- [ ] General: Yeah Tiki.sol is done, will get DPT upgraded as well
 - [ ] Upgrade CertiK standards
-	- [ ] Auto-Payment: Needs more of a description nothing is automatic
+	- [x] Auto-Payment: Needs more of a description nothing is automatic
 	- [ ] DPTOI.sol: Rebranding of what a function does in comments
 	- [ ] DPTOI.sol: Clean a function 148-150
-	- [ ] Tiki.sol: 3rd Party Deps - Minor
+	- [x] Tiki.sol: 3rd Party Deps - Minor
+		* Hosted git repos from pancakeswap since they dont
+		* Upgraded the enviroment to truffle
+		* Added SPDX headers for less errors (GPL3)
 	- [ ] Tiki.sol: Unreachable code (same as HashEx)
 	- [ ] Tiki.sol: FixedSaleWallet - remove 100% 141-145:173-176
 	- [ ] Tiki.sol: Owner is multi-sig wallet 183-212:534-542:633-648:230-235
+		* Making a list of who shouldn't be getting dividends, adding those to tx to save gas
 	- [x] Tiki.sol: Add emit 409, 412, 633
 	- [ ] Tiki.sol: isFixedSaleBuy 336-340
-	- [ ] Tiki.sol: Irrelevant comments 441
+	- [x] Tiki.sol: Irrelevant comments 441
 	- [ ] Tiki.sol: Return values, add sucess/failure options 463-469:479-486
 	- [ ] Tiki.sol: Typos 64
 - [ ] Deploy alpha contract to BNBTest net
