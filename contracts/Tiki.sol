@@ -35,7 +35,7 @@ contract BNBack is ERC20, Ownable {
   uint256 public liquidityFee = 2;
   uint256 public marketingFee = 3;
   uint256 public totalFees = BNBRewardsFee.add(liquidityFee).add(marketingFee);
-  address payable public _marketingWalletAddress = payable(0x5D4411A256F49239F7F9FD51934FE32cca9BDD65);
+  address payable public _marketingWalletAddress = payable(msg.sender);
 
   // use by default 300,000 gas to process auto-claiming dividends
   uint256 public gasForProcessing = 300000;
@@ -85,7 +85,7 @@ contract BNBack is ERC20, Ownable {
 
     dividendTracker = new BNBackDividendTracker();
 
-    IPancakeRouter02 _uniswapV2Router = IPancakeRouter02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
+    IPancakeRouter02 _uniswapV2Router = IPancakeRouter02(0xD99D1c33F9fC3444f8101754aBC46c52416550D1);
 
     // Create a uniswap pair for this new token
     address _uniswapV2Pair = IPancakeFactory(_uniswapV2Router.factory()).createPair(address(this), _uniswapV2Router.WETH());
@@ -94,20 +94,19 @@ contract BNBack is ERC20, Ownable {
 
     _setAutomatedMarketMakerPair(_uniswapV2Pair, true);
 
-    // exclude from receiving dividends
-    dividendTracker.excludeFromDividends(address(dividendTracker));
-    dividendTracker.excludeFromDividends(address(this));
-    dividendTracker.excludeFromDividends(owner());
-    dividendTracker.excludeFromDividends(deadWallet);
-    dividendTracker.excludeFromDividends(address(_uniswapV2Router));
+    // exclude from receiving dividends - blocking for now
+    //dividendTracker.excludeFromDividends(address(dividendTracker));
+    //dividendTracker.excludeFromDividends(address(this));
+    //dividendTracker.excludeFromDividends(deadWallet);
+    //dividendTracker.excludeFromDividends(address(_uniswapV2Router));
 
-    // exclude from paying fees or having max transaction amount
-    excludeFromFees(owner(), true);
-    excludeFromFees(_marketingWalletAddress, true);
-    excludeFromFees(address(this), true);
+    // exclude from paying fees or having max transaction amount - blocking for now
+    //excludeFromFees(owner(), true);
+    //excludeFromFees(_marketingWalletAddress, true);
+    //excludeFromFees(address(this), true);
 
     // _mint is an internal function in ERC20.sol that is only called here, and CANNOT be called ever again
-    _mint(owner(), 1000000000000000 * (10**18));
+    _mint(msg.sender, 1000000000000000 * (10**18));
     }
 
   receive() external payable {}

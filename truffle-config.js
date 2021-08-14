@@ -64,7 +64,7 @@ module.exports = {
     // Binance Test Net
     BNBTest: {
       provider: function() {
-        return new HDWalletProvider(process.env.MNEMONIC, `https://data-seed-prebsc-1-s1.binance.org:8545`);
+        return new HDWalletProvider(process.env.MNEMONIC, `https://data-seed-prebsc-2-s1.binance.org:8545`);
       },
       network_id: 97,
       gas: 4500000,
@@ -108,8 +108,8 @@ module.exports = {
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       settings: {          // See the solidity docs for advice about optimization and evmVersion
         optimizer: {
-          enabled: false,
-          runs: 200
+          enabled: true,
+          runs: 1000
         }
       //  evmVersion: "byzantium"
       }
